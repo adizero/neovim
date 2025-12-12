@@ -35,10 +35,13 @@ find_package(Treesitter 0.25.0 REQUIRED)
 find_package(Unibilium 2.0 REQUIRED)
 find_package(UTF8proc REQUIRED)
 
+set(CUSTOM_LIB_DIR "${CMAKE_SOURCE_DIR}/build")
+target_link_directories(main_lib INTERFACE ${CUSTOM_LIB_DIR})
 target_link_libraries(main_lib INTERFACE
   iconv
   lpeg
   treesitter
+  endianfix
   unibilium
   utf8proc)
 target_link_libraries(nlua0 PUBLIC lpeg)
